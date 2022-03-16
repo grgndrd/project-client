@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState,  } from "react";
 import axios from "axios";
+import { AuthContext } from '../context/auth.context.js'
+import { useNavigate } from "react-router-dom";
+
 
 function AddForm(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  let navigate = useNavigate();
+  const storedToken = localStorage.getItem("authToken");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,11 +17,12 @@ function AddForm(props) {
     const body = { title, description };
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/projects`, body)
-      .then((response) => {
+      .post(`${process.env.REACT_APP_API_URL}/recipes/create`, body, {
+        headers: { Authorization: `Bearer ${storedToken}` }} )
+      .then((createdRecipe) => {
         setTitle("");
         setDescription("");
-        props.refreshProjects();
+        navigate(`/recipes`);
       })
       .catch((err) => console.log(err));
   };

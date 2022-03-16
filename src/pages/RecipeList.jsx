@@ -2,40 +2,42 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AddForm from "../Components/AddForm";
+import { AuthContext } from "../context/auth.context.js";
 
 function RecipeList() {
-  const [projects, setProjects] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
-  const fetchProjects = async () => {
+  const fetchRecipes = async () => {
     try {
       const storedToken = localStorage.getItem("authToken");
 
       let response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/projects`,
+        `${process.env.REACT_APP_API_URL}/recipes`,
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
-      setProjects(response.data);
+      setRecipes(response.data);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchProjects();
+    fetchRecipes();
   }, []);
 
   return (
     <div className="test">
-      {projects.map((project) => {
-          return (
-          <div key={project._id}>
-            <Link to={`/projects/${project._id}`}>
-              <h3>{project.title}</h3>
+      <h2>Recipes List</h2>
+      {recipes && recipes.map((recipe) => {
+        return (
+          <div key={recipe._id}>
+            <Link to={`/recipes/${recipe._id}`}>
+              <h3>{recipe.title}</h3>
             </Link>
           </div>
-        );
+        )
       })}
     </div>
   );

@@ -11,6 +11,7 @@ import SignupPage from "./pages/SignupPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import IsPrivate from "./Components/isPrivate";
 import IsAnon from "./Components/isAnon";
+import AddForm from "./Components/AddForm";
 
 function App() {
   return (
@@ -22,8 +23,8 @@ function App() {
           path="/recipes"
           element={
             <IsPrivate>
-              <RecipeList />
               <SearchBar></SearchBar>
+              <RecipeList />
             </IsPrivate>
           }
         />
@@ -32,6 +33,14 @@ function App() {
           element={
             <IsPrivate>
               <RecipeDetails />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/recipes/create"
+          element={
+            <IsPrivate>
+              <AddForm />
             </IsPrivate>
           }
         />

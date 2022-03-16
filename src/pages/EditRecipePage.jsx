@@ -38,12 +38,14 @@ function EditRecipePage() {
 
     const body = { title, description };
 
+    console.log(body);
+
     axios
-      .put(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`, body)
+      .put(`${process.env.REACT_APP_API_URL}/recipes/edit/${recipeId}`, body)
       .then((response) => {
         setTitle("");
         setDescription("");
-        navigate(`/projects/${recipeId}`);
+        navigate(`/recipes/${recipeId}`);
       })
       .catch((err) => console.log(err));
   };

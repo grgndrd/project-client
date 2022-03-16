@@ -3,41 +3,35 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function RecipeDetails() {
-  const [project, setProject] = useState(null);
-  const { projectId } = useParams();
+  const [recipe, setRecipe] = useState(null);
+  const { recipeId } = useParams();
 
-  const fetchProject = async () => {
+  const fetchRecipe = async () => {
     try {
-      let response = await axios.get(`${process.env.REACT_APP_API_URL}/api/projects/${projectId}`);
-      setProject(response.data);
+      let response = await axios.get(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`);
+      setRecipe(response.data);
     } catch (error) {
       console.log(error);
     }
   };
 
+  console.log(recipe)
+
   useEffect(() => {
-    fetchProject();
+    fetchRecipe();
   }, []);
 
   return (
     <div>
-      {project && (
+      {recipe && (
         <>
-          <h1>{project.title}</h1>
-          <p>{project.description}</p>
+          <h1>{recipe.title}</h1>
+          <p>{recipe.description}</p>
         </>
       )}
-      {project &&
-        project.tasks.map((task) => (
-          <li key={task._id}>
-            <h3>{task.title}</h3>
-            <h4>Description</h4>
-            <p>{task.description}</p>
-          </li>
-        ))}
 
-      {project && <Link to={`/projects/edit/${project._id}`}>Edit Project</Link>}
-      <Link to="/projects"> Back to Project List</Link>
+      {recipe && <Link to={`/recipes/edit/${recipe._id}`}>Edit Recipe</Link>}
+      <Link to="/recipes"> Back to Recipes List</Link>
     </div>
   );
 }
