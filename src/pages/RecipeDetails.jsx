@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState(null);
@@ -8,24 +8,27 @@ function RecipeDetails() {
 
   const fetchRecipe = async () => {
     try {
-      let response = await axios.get(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`);
+      let response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/recipes/${recipeId}`
+      );
       setRecipe(response.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(recipe)
+  console.log(recipe);
 
   useEffect(() => {
     fetchRecipe();
   }, []);
 
   return (
-    <div>
+    <div className="recipeDetails">
       {recipe && (
         <>
           <h1>{recipe.title}</h1>
+          <p>{recipe.chef.username}</p>
           <p>{recipe.description}</p>
         </>
       )}

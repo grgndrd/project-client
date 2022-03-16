@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import AddForm from "../Components/AddForm";
-import { AuthContext } from "../context/auth.context.js";
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
@@ -12,12 +10,13 @@ function RecipeList() {
       const storedToken = localStorage.getItem("authToken");
 
       let response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/recipes`,
+        `${process.env.REACT_APP_API_URL}/favorites`,
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
       setRecipes(response.data);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -28,14 +27,14 @@ function RecipeList() {
   }, []);
 
   return (
-    <div className="recipeList">
-      <h2>Community Recipes List</h2>
+    <div className="test">
+      <h2>Favorite Recipes</h2>
       {recipes &&
         recipes.map((recipe) => {
           return (
-            <div key={recipe._id}>
-              <Link to={`/recipes/${recipe._id}`}>
-                <h3>{recipe.title}</h3>
+            <div key={recipe.favoriteRecipes._id}>
+              <Link to={`/recipes/${recipe.favoriteRecipes._id}`}>
+                <h3>{recipe.favoriteRecipes.title}</h3>
               </Link>
             </div>
           );

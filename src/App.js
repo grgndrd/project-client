@@ -12,6 +12,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import IsPrivate from "./Components/isPrivate";
 import IsAnon from "./Components/isAnon";
 import AddForm from "./Components/AddForm";
+import RecipeListFavorites from "./pages/RecipeListFavorites";
 
 function App() {
   return (
@@ -23,8 +24,23 @@ function App() {
           path="/recipes"
           element={
             <IsPrivate>
-              <SearchBar></SearchBar>
               <RecipeList />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/recipes-search"
+          element={
+            <IsPrivate>
+              <SearchBar />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <IsPrivate>
+              <RecipeListFavorites />
             </IsPrivate>
           }
         />

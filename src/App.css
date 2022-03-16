@@ -9,8 +9,8 @@
   outline: none;
 }
 
-html {
-  font-size: 62.5%;
+a:visited {
+  text-decoration: none;
 }
 
 .searchBar {
@@ -20,14 +20,11 @@ html {
 }
 
 h1 {
-  font-size: 8rem;
-  letter-spacing: 0.1rem;
-  font-style: italic;
   text-align: center;
   color: #40b48e;
   text-shadow: 0 0.2rem 5rem rgb(119, 115, 115);
   text-transform: uppercase;
-  margin: 4rem 0;
+  margin: 60px 15px;
 }
 
 .search-form {
@@ -54,7 +51,6 @@ h1 {
 }
 
 .alert h3 {
-  font-size: 1.8rem;
   color: #fff;
   font-weight: 400;
   text-transform: uppercase;
@@ -62,7 +58,6 @@ h1 {
 }
 
 .search-form input {
-  font-size: 1.6rem;
   border: none;
   border-bottom: 0.1rem solid #ccc;
   margin: 0 0.5rem;
@@ -112,7 +107,6 @@ h1 {
   top: 2.5rem;
   left: 2.5rem;
   right: 2.5rem;
-  font-size: 2.5rem;
   font-weight: 400;
   text-shadow: 0 0.5rem 0.5rem #555;
   color: #fff;
@@ -129,7 +123,6 @@ h1 {
 }
 
 .recipe button {
-  font-size: 2rem;
   text-transform: uppercase;
   color: #fff;
   background-color: #40b48e;
@@ -150,13 +143,11 @@ h1 {
 }
 
 .ingredient-text {
-  font-size: 1.5rem;
   color: #888;
 }
 
 .ingredient-weight {
   color: #40b48e;
-  font-size: 1.3rem;
 }
 
 .Navbar {
@@ -165,5 +156,28 @@ h1 {
   flex-wrap: nowrap;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  background-color: #F1E1A6;
+}
+
+.classLink {
+  text-decoration: none;
+}
+
+.homeFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+
+.recipeList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
 }

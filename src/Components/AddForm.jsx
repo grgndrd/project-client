@@ -1,8 +1,6 @@
-import React, { useState,  } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { AuthContext } from '../context/auth.context.js'
 import { useNavigate } from "react-router-dom";
-
 
 function AddForm(props) {
   const [title, setTitle] = useState("");
@@ -18,7 +16,8 @@ function AddForm(props) {
 
     axios
       .post(`${process.env.REACT_APP_API_URL}/recipes/create`, body, {
-        headers: { Authorization: `Bearer ${storedToken}` }} )
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((createdRecipe) => {
         setTitle("");
         setDescription("");
@@ -40,7 +39,7 @@ function AddForm(props) {
         />
 
         <label htmlFor="description">Description</label>
-        <input
+        <textarea
           type="text"
           name="description"
           value={description}
