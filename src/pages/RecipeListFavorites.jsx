@@ -3,8 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function RecipeList() {
-  const [recipes, setRecipes] = useState([]);
-
+  const [recipesFavorites, setRecipesFavorites] = useState([]);
+  // let recipeList = [];
   const fetchRecipes = async () => {
     try {
       const storedToken = localStorage.getItem("authToken");
@@ -15,13 +15,13 @@ function RecipeList() {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
-      setRecipes(response.data);
-      console.log(response.data);
+      setRecipesFavorites(response.data[0].favoriteRecipes);
+      console.log(response.data[0].favoriteRecipes);
+      // recipeList = response.data[0].favoriteRecipes;
     } catch (error) {
       console.log(error);
     }
   };
-
   useEffect(() => {
     fetchRecipes();
   }, []);
@@ -29,14 +29,18 @@ function RecipeList() {
   return (
     <div className="test">
       <h2>Favorite Recipes</h2>
-      {recipes &&
-        recipes.map((recipe) => {
+      {recipesFavorites &&
+        recipesFavorites.map((recipe) => {
           return (
-            <div key={recipe.favoriteRecipes._id}>
-              <Link to={`/recipes/${recipe.favoriteRecipes._id}`}>
-                <h3>{recipe.favoriteRecipes.title}</h3>
+            <div key={recipe._id}>
+              <Link to={`/recipes/${recipe._id}`}>
+                <h3>{recipe.label}</h3>
               </Link>
             </div>
+            /* <div>
+              <p>fdsasfdssfs</p>
+              <p>{recipe.label}</p>
+            </div> */
           );
         })}
     </div>
