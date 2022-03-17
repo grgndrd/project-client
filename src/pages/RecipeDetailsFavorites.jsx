@@ -6,16 +6,14 @@ function RecipeDetailsFavorites() {
   const [recipe, setRecipe] = useState([]);
   const { favoriteId } = useParams();
   const location = useLocation();
-    const { from } = location.state;
-    const recipeObj = from;
-const navigate = useNavigate();
-    
-const storedToken = localStorage.getItem("authToken");
+  const { from } = location.state;
+  const recipeObj = from;
+  const navigate = useNavigate();
 
+  const storedToken = localStorage.getItem("authToken");
 
   const deleteRecipe = () => {
-      
-      const body = recipeObj;
+    const body = recipeObj;
 
     axios
       .put(`${process.env.REACT_APP_API_URL}/favorites/${favoriteId}`, body, {
@@ -23,27 +21,27 @@ const storedToken = localStorage.getItem("authToken");
       })
       .then(() => navigate("/favorites"));
   };
-    
-    // const deleteFavorite = (recipeObj) => {
-    //   const body = recipeObj;
 
-    //   console.log(body);
+  // const deleteFavorite = (recipeObj) => {
+  //   const body = recipeObj;
 
-    //   axios
-    //     .put(`${process.env.REACT_APP_API_URL}/add-favorite`, body, {
-    //       headers: { Authorization: `Bearer ${storedToken}` },
-    //     })
-    //     .then((createdRecipe) => {
-    //       setIsFavorite(true);
-    //     })
-    //     .catch((err) => console.log(err));
-    // };
+  //   console.log(body);
+
+  //   axios
+  //     .put(`${process.env.REACT_APP_API_URL}/add-favorite`, body, {
+  //       headers: { Authorization: `Bearer ${storedToken}` },
+  //     })
+  //     .then((createdRecipe) => {
+  //       setIsFavorite(true);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   console.log(from);
 
   return (
     <div className="recipeDetails">
-      <h2>Recipe Details</h2>
+      <h1 className="navLink margin">Recipe Details</h1>
       <h1>{from.label}</h1>
       <img src={from.image} alt={from.label} />
       <ul>

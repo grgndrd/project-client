@@ -30,10 +30,12 @@ function LoginPage() {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
+    <div className="recipeList">
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+      <form className="recipeList" onSubmit={handleSubmit}>
+        <label className="margin" htmlFor="username">
+          Username
+        </label>
         <input
           type="text"
           name="username"
@@ -41,7 +43,9 @@ function LoginPage() {
           onChange={handleUsername}
         />
 
-        <label htmlFor="password">Password</label>
+        <label className="margin" htmlFor="password">
+          Password
+        </label>
         <input
           type="password"
           name="password"
@@ -49,7 +53,10 @@ function LoginPage() {
           onChange={handlePassword}
         />
 
-        <button type="submit"> Login</button>
+        <button className="Link" type="submit">
+          {" "}
+          Login
+        </button>
       </form>
     </div>
   );

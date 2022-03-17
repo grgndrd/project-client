@@ -5,14 +5,19 @@ function HomePage() {
   return (
     <div className="homeFlex">
       <div>
-        <h2>Welcome,</h2>
-        <p>
-          If you're lazy and need some recipes,
-          <p>you're welcome to join this</p>
-          community of not-so-creative cooks!
+        <h2 className="navLink">Welcome,</h2>
+        <p className="navLink">
+          Lorem ipsum dolor sit amet consectetur
+          <p>adipisicing elit. Natus ad sunt explicabo. </p>
+          Magnam vel voluptatem odit autem, molestiae id.
         </p>
       </div>
-      <img className="marginPicture" src={goodfood} alt="foodtable" width={"600px"}></img>
+      <img
+        className="marginPicture"
+        src={goodfood}
+        alt="foodtable"
+        width={"600px"}
+      ></img>
     </div>
   );
 }

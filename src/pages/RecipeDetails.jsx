@@ -24,12 +24,16 @@ function RecipeDetails() {
   }, []);
 
   return (
-    <div className="recipeDetails">
+    <div className="recipeList">
       {recipe && (
         <>
-          <h2>{recipe.title}</h2>
-          <p>made by chef:{recipe.chef.username}</p>
-          <p>{recipe.description}</p>
+          <h1 className="navLink margin">{recipe.title}</h1>
+          <b>
+            <p className="navLink">made by chef:{recipe.chef.username}</p>
+          </b>
+          <b>
+            <p className="navLink">{recipe.description}</p>
+          </b>
         </>
       )}
 
