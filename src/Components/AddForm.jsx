@@ -27,25 +27,33 @@ function AddForm(props) {
   };
 
   return (
-    <div>
-      <h3>Add Recipes</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
+    <div className="recipeList">
+      <h1 className="margin navLink">Add Recipes</h1>
+      <form className="recipeList" onSubmit={handleSubmit}>
+        <label htmlFor="title">
+          <b className="navLink">Title</b>
+        </label>
         <input
+          className="margin"
           type="text"
           name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <label htmlFor="description">Description</label>
+        <label htmlFor="description">
+          <b className="navLink">Description</b>
+        </label>
         <textarea
+          className="margin"
           type="text"
           name="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button type="submit">Add Recipe</button>
+        <button className="Link" type="submit">
+          Add Recipe
+        </button>
       </form>
     </div>
   );

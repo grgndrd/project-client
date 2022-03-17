@@ -29,13 +29,16 @@ function RecipeList() {
 
   return (
     <div className="recipeList">
-      <h2>Community Recipes List</h2>
+      <h1 className="margin">Community Recipes List</h1>
+      <Link className="Link" to={`/recipes/create`}>
+        <h3>Add your own!</h3>
+      </Link>
       {recipes &&
         recipes.map((recipe) => {
           return (
             <div key={recipe._id}>
-              <Link to={`/recipes/${recipe._id}`}>
-                <h3>{recipe.title}</h3>
+              <Link className="Link" to={`/recipes/${recipe._id}`}>
+                <h4>{recipe.title}</h4>
               </Link>
             </div>
           );

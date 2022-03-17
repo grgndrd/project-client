@@ -13,6 +13,8 @@ import IsPrivate from "./Components/isPrivate";
 import IsAnon from "./Components/isAnon";
 import AddForm from "./Components/AddForm";
 import RecipeListFavorites from "./pages/RecipeListFavorites";
+import RecipeDetailsFavorites from "./pages/RecipeDetailsFavorites";
+import EditFavoriteRecipePage from "./pages/EditFavoriteRecipePage";
 
 function App() {
   return (
@@ -43,6 +45,18 @@ function App() {
               <RecipeListFavorites />
             </IsPrivate>
           }
+        />
+        <Route
+          path="/favorites/:favoriteId"
+          element={
+            <IsPrivate>
+              <RecipeDetailsFavorites />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/favorites/edit/:favoriteId"
+          element={<EditFavoriteRecipePage />}
         />
         <Route
           path="/recipes/:recipeId"

@@ -27,14 +27,21 @@ function RecipeDetails() {
     <div className="recipeDetails">
       {recipe && (
         <>
-          <h1>{recipe.title}</h1>
-          <p>{recipe.chef.username}</p>
+          <h2>{recipe.title}</h2>
+          <p>made by chef:{recipe.chef.username}</p>
           <p>{recipe.description}</p>
         </>
       )}
 
-      {recipe && <Link to={`/recipes/edit/${recipe._id}`}>Edit Recipe</Link>}
-      <Link to="/recipes"> Back to Recipes List</Link>
+      {recipe && (
+        <Link className="Link" to={`/recipes/edit/${recipe._id}`}>
+          Edit Recipe
+        </Link>
+      )}
+      <Link className="Link" to="/recipes">
+        {" "}
+        Back to Recipes List
+      </Link>
     </div>
   );
 }

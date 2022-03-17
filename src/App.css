@@ -20,11 +20,12 @@ a:visited {
 }
 
 h1 {
-  text-align: center;
   color: #40b48e;
   text-shadow: 0 0.2rem 5rem rgb(119, 115, 115);
-  text-transform: uppercase;
-  margin: 60px 15px;
+}
+
+p {
+  font-size: 1.5rem;
 }
 
 .search-form {
@@ -88,7 +89,7 @@ h1 {
 }
 
 .recipe {
-  width: 30rem;
+  width: 15rem;
   margin: 3rem;
   display: flex;
   flex-direction: column;
@@ -102,9 +103,7 @@ h1 {
 .recipe h2 {
   background-color: rgba(161, 161, 161, 0.7);
   border-radius: 0.5rem;
-  padding: 0.3rem 0.5rem;
   position: absolute;
-  top: 2.5rem;
   left: 2.5rem;
   right: 2.5rem;
   font-weight: 400;
@@ -146,10 +145,6 @@ h1 {
   color: #888;
 }
 
-.ingredient-weight {
-  color: #40b48e;
-}
-
 .Navbar {
   display: flex;
   flex-direction: row;
@@ -157,11 +152,15 @@ h1 {
   justify-content: space-evenly;
   align-items: center;
   font-size: 2rem;
-  background-color: #F1E1A6;
+  background-color: #f1e1a6;
+  margin-bottom: 75px;
+  padding-bottom: 45px;
+  padding-top: 45px;
 }
 
-.classLink {
+.navLink {
   text-decoration: none;
+  color: #40b48e;
 }
 
 .homeFlex {
@@ -180,4 +179,39 @@ h1 {
   justify-content: center;
   align-items: center;
   align-content: stretch;
+}
+
+.Link {
+  background-color: #40b48e;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  border: #40b48e 1px solid;
+  display: inline-block;
+  margin: 15px 0;
+}
+
+.recipeDetails {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+
+.margin {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+textarea {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.marginPicture {
+  margin-left: 100px;
 }

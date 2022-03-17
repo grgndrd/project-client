@@ -7,30 +7,35 @@ function Navbar() {
   return (
     <nav className="Navbar">
       <h1>ironCook</h1>
-      <Link to="/"> Homepage</Link>
+      <Link className="navLink" to="/">
+        {" "}
+        Home
+      </Link>
       {loggedIn && (
         <>
-          <Link className="classLink" to="/recipes">
+          <Link className="navLink" to="/recipes">
             Recipes
           </Link>
-          <Link className="classLink" to="/recipes-search">
+          <Link className="navLink" to="/recipes-search">
             Search for Food
           </Link>
-          <Link className="classLink" to="/favorites">
+          <Link className="navLink" to="/favorites">
             Favorites
           </Link>
-          {user.username}
-          <button onClick={logoutUser}>Logout</button>
+          <p className="navLink">Hello, {user.username}</p>
+          <button className="Link" onClick={logoutUser}>
+            Logout
+          </button>
         </>
       )}
 
       {!loggedIn && (
         <>
-          <Link className="classLink" to="/signup">
+          <Link className="navLink" to="/signup">
             {" "}
             Signup
           </Link>
-          <Link className="classLink" to="/login">
+          <Link className="navLink" to="/login">
             {" "}
             Login
           </Link>

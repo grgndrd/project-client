@@ -10,16 +10,18 @@ function EditRecipePage() {
 
   const navigate = useNavigate();
 
+  const storedToken = localStorage.getItem("authToken");
+  
   const deleteRecipe = () => {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`)
-      .then(() => navigate("/recipes"));
+      .delete(`${process.env.REACT_APP_API_URL}/favorites/${recipeId}`)
+      .then(() => navigate("/favorites"));
   };
 
   const fetchProject = async () => {
     try {
       let response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/recipes/${recipeId}`
+        `${process.env.REACT_APP_API_URL}/favorites/${recipeId}`
       );
       let { title, description } = response.data;
       setTitle(title);
@@ -41,22 +43,20 @@ function EditRecipePage() {
     console.log(body);
 
     axios
-      .put(`${process.env.REACT_APP_API_URL}/recipes/edit/${recipeId}`, body)
+      .put(`${process.env.REACT_APP_API_URL}/favorites/edit/${recipeId}`, body)
       .then((response) => {
         setTitle("");
         setDescription("");
-        navigate(`/recipes/${recipeId}`);
+        navigate(`/favorites/${recipeId}`);
       })
       .catch((err) => console.log(err));
   };
 
   return (
     <div className="recipeList">
-      <h1>Edit Recipes</h1>
-      <form className="recipeList" onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          <b className="">Title</b>
-        </label>
+      <h3>Edit Recipes</h3>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="title">Title</label>
         <input
           type="text"
           name="title"
@@ -64,23 +64,16 @@ function EditRecipePage() {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <label htmlFor="description">
-          <b>Description</b>
-        </label>
+        <label htmlFor="description">Description</label>
         <textarea
           type="text"
           name="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button className="Link" type="submit">
-          Edit Recipe
-        </button>
+        <button type="submit">Edit Project</button>
       </form>
-      <button className="Link" onClick={deleteRecipe}>
-        {" "}
-        Delete Recipe
-      </button>
+      <button onClick={deleteRecipe}> Delete Project</button>
     </div>
   );
 }
